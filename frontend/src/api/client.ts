@@ -1,9 +1,5 @@
-// src/api/client.ts
-import axios from 'axios';
-
-const API_BASE = 'http://localhost:4000';
+import axios from "axios";
 
 export const api = axios.create({
-  baseURL: API_BASE,
-  timeout: 10000
+  baseURL: "http://localhost:4000", // ⚠️ change to your backend port
 });

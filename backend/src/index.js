@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const eventsRouter = require('./routes/events');
-const zonesRouter = require('./routes/zones');
 const vehiclesRouter = require('./routes/vehicles');
 const logger = require('./util/logger');
 const locationsRouter = require('./routes/locations');
@@ -22,7 +21,6 @@ app.use((req, res, next) => {
 
 app.use('/', locationsRouter); // or app.use('/api', locationsRouter) if you prefer prefix
 app.use('/events', eventsRouter);
-app.use('/zones', zonesRouter);
 app.use('/vehicles', vehiclesRouter);
 
 app.get('/', (req, res) => res.send('Geofence Service OK'));
