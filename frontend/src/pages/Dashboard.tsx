@@ -7,6 +7,7 @@ import axios from 'axios';
 import  MapClickHandler  from '../components/MapClickHandler';
 import  MapStateTracker  from '../components/MapStateTracker';
 import MapUpdater from '../components/MapUpdater';
+import { baseURL } from '../api/client';
 
 const Dashboard = ({ mapState, setMapState }: any) => {
   const [vehicles, setVehicles] = useState<any[]>([]);
@@ -14,13 +15,13 @@ const Dashboard = ({ mapState, setMapState }: any) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:4000/vehicles-list')
+    axios.get(`${baseURL}/vehicles-list'`)
       .then(res => setVehicles(res.data))
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    const socket = io('http://localhost:4000'); // Connect to your backend port
+    const socket = io(baseURL); // Connect to your backend port
 
     socket.on('location', (payload) => {
       // payload: { vehicleId, lat, lon, ts, address ... }

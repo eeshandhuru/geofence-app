@@ -8,6 +8,7 @@ import { io } from 'socket.io-client';
 import  MapClickHandler  from '../components/MapClickHandler';
 import  MapStateTracker  from '../components/MapStateTracker';
 import MapUpdater from '../components/MapUpdater';
+import { baseURL } from '../api/client';
 
 const latestIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
@@ -22,12 +23,12 @@ const VehicleDetail = ({ mapState, setMapState }: any) => {
 
 useEffect(() => {
     // Initial history fetch
-    axios.get(`http://localhost:4000/latest-locations/${id}`)
+    axios.get(`${baseURL}/latest-locations/${id}`)
       .then(res => setHistory(res.data.locations))
       .catch(err => console.error(err));
 
     // Listen for live updates for THIS specific vehicle
-    const socket = io('http://localhost:4000');
+    const socket = io(baseURL);
     
     socket.on('location', (payload) => {
       if (payload.vehicleId === id) {

@@ -1,11 +1,12 @@
 import { useMapEvents } from "react-leaflet";
 import axios from "axios";
+import { baseURL } from "../api/client";
 
 const MapClickHandler = ({ onLocationFound }: { onLocationFound: (lat: number, lon: number, addr: string) => void }) => {
   useMapEvents({
     async click(e) {
       try {
-        const res = await axios.get('http://localhost:4000/reverse-proxy', {
+        const res = await axios.get(`${baseURL}/reverse-proxy`, {
             params: { lat: e.latlng.lat, lon: e.latlng.lng }
         });
         onLocationFound(e.latlng.lat, e.latlng.lng, res.data.display_name);

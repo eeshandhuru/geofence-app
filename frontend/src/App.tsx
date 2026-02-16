@@ -4,6 +4,7 @@ import axios from 'axios';
 import Dashboard from './pages/Dashboard';
 import VehicleDetail from './pages/VehicleDetail';
 import 'leaflet/dist/leaflet.css';
+import { baseURL } from './api/client';
 
 const SearchBar = () => {
   const [searchId, setSearchId] = useState('');
@@ -13,7 +14,7 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:4000/vehicles-list')
+    axios.get(`${baseURL}/vehicles-list`)
       .then(res => setVehicles(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -92,7 +93,10 @@ const App = () => {
             isInitialLoad: true
           });
         },
-        (err) => console.log("Location denied or unavailable"),
+        (err) => {
+          console.error(`${err.code}: ${err.message}`);
+          console.log('Location denied or unavailable');
+        },
         { enableHighAccuracy: true }
       );
     }
