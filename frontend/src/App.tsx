@@ -14,7 +14,7 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${baseURL}/vehicles-list`)
+    axios.get(`${baseURL}/api/vehicles-list`)
       .then(res => setVehicles(res.data))
       .catch(err => console.error(err));
   }, []);

@@ -1,1 +1,1 @@
-export const baseURL = "https://geofence-app-backend.vercel.app"; // ⚠️ change to your backend port
+export const baseURL = "https://localhost:4000"; // ⚠️ change to your backend port
