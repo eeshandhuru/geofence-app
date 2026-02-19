@@ -15,6 +15,8 @@ out
 .env.production
 *.pem
 *.key
+.idea
+.vs
 
 # Git
 .git
