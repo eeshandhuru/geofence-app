@@ -6,7 +6,7 @@ const MapClickHandler = ({ onLocationFound }: { onLocationFound: (lat: number, l
   useMapEvents({
     async click(e) {
       try {
-        const res = await axios.get(`${baseURL}/api/reverse-proxy`, {
+        const res = await axios.get(`${baseURL}/reverse-proxy`, {
             params: { lat: e.latlng.lat, lon: e.latlng.lng }
         });
         onLocationFound(e.latlng.lat, e.latlng.lng, res.data.display_name);

@@ -23,7 +23,7 @@ const VehicleDetail = ({ mapState, setMapState }: any) => {
 
 useEffect(() => {
     // Initial history fetch
-    axios.get(`${baseURL}/api/latest-locations/${id}`)
+    axios.get(`${baseURL}/latest-locations/${id}`)
       .then(res => setHistory(res.data.locations))
       .catch(err => console.error(err));
 
