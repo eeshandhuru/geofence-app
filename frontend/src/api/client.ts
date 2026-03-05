@@ -1,1 +1,1 @@
-export const baseURL = "https://geofencebackend-fqzs1l0n.b4a.run"; // ⚠️ change to your backend port
+export const baseURL = "https://geofence-app-fo46.onrender.com"; // ⚠️ change to your backend port
