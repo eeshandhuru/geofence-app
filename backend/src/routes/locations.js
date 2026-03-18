@@ -31,7 +31,7 @@ router.get('/reverse-proxy', async (req, res) => {
   try {
     const response = await axios.get('https://nominatim.openstreetmap.org/reverse', {
       params: { lat, lon, format: 'json', zoom: 18 },
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36'  } // Backend can set this safely!
+      headers: { 'User-Agent': 'Thunder Client (https://www.thunderclient.com)'  } // Backend can set this safely!
     });
     res.json(response.data);
   } catch (err) {
