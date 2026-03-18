@@ -25,19 +25,6 @@ router.get('/vehicles-list', async (req, res) => {
   }
 });
 
-// Add to your backend routes
-router.get('/reverse-proxy', async (req, res) => {
-  const { lat, lon } = req.query;
-  try {
-    const response = await axios.get('https://nominatim.openstreetmap.org/reverse', {
-      params: { lat, lon, format: 'json', zoom: 18 },
-      headers: { 'User-Agent': 'Thunder Client (https://www.thunderclient.com)'  } // Backend can set this safely!
-    });
-    res.json(response.data);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 /**
  * GET /latest-locations?limit=100
  * Returns the most recent location events (globally)
